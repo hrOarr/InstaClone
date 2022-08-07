@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/index.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div th:fragment="header">
+    <div style="margin-top: 30px; text-align: center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <span>
+                    <img class="rounded-circle" src="../static/images/Instagram.svg" width="70" th:src="@{images/Instagram.svg}"/>
+                </span>
+                <span class="app_title">&nbsp;Instaclone</span>
+            </div>
+        </div>
+        <div class="row" style="text-align: center; padding-top: 15px">
+            <div class="col-md-6 offset-md-3">
+                <ul id="navbar_section" sec:authorize="isFullyAuthenticated()">
+                    <li style="display: inline-block">
+                        <span sec:authentication="name"></span>
+                    </li>
+                    <li style="display: inline-block; padding-left: 10px">|</li>
+                    <li style="display: inline-block; padding-left: 10px">Logout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</html>

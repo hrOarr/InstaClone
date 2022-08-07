@@ -1,0 +1,16 @@
+.container{
+    margin: 50px auto;
+}
+
+.header{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.app_title{
+    font-size: 30px;
+}
+
+#navbar_section li {
+    display: inline-block;
+}
