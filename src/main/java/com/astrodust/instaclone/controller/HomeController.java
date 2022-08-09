@@ -7,6 +7,7 @@ import com.astrodust.instaclone.service.interfaces.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class HomeController {
     private ImageService imageService;
 
     @GetMapping(value = {"/", "/home"})
+    @PreAuthorize("hasAuthority('USER')")
     public String home(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImp userDetails = (UserDetailsImp) authentication.getPrincipal();

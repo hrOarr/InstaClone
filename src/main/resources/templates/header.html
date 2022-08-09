@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 
@@ -23,6 +22,9 @@
                     <span style="font-size: 25px" sec:authentication="name"></span>
                     <span style="display: inline-block; padding-left: 30px">
                         <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="document.forms['logoutForm'].submit()" style="font-size: 16px; padding: 4px">Logout</button>
+                    </span>
+                    <span sec:authorize="hasAuthority('ADMIN')" style="display: inline-block; padding-left: 30px">
+                        <a th:href="@{/admin/dashboard}"><button class="btn btn-sm btn-primary btn-block">Admin Dashboard</button></a>
                     </span>
                 </div>
             </div>

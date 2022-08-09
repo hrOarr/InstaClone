@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <title>Admin - Dashboard</title>
     <meta charset="UTF-8">
-    <title>Home</title>
-
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 
 <body>
+
 <div class="container">
     <th:block th:include="header:: header" ></th:block>
+
     <div class="row" style="padding-top: 25px">
         <div class="col-md-4 offset-md-4">
-            <form th:action="@{/images/upload}" method="post" enctype="multipart/form-data">
-                <input class="form-control" name="file" type="file" id="formFile" required><br />
-                <div style="text-align: center">
-                    <input type="submit" value="Upload" class="btn btn-warning">
-                </div>
-            </form>
+            <h3>Admin Dashboard</h3>
         </div>
     </div>
-    <div style="padding-top: 30px">
-        <th:block th:include="image_list:: image_list"></th:block>
-    </div>
 </div>
-</body>
 
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
 </html>
