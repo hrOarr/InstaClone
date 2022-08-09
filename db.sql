@@ -13,6 +13,7 @@ CREATE TABLE USERS(
     user_id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(55) NOT NULL,
     email VARCHAR(55) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id)
 );
 

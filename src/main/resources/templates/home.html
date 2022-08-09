@@ -11,7 +11,19 @@
 <body>
 <div class="container">
     <th:block th:include="header:: header" ></th:block>
-
+    <div class="row" style="padding-top: 25px">
+        <div class="col-md-4 offset-md-4">
+            <form th:action="@{/images/upload}" method="post" enctype="multipart/form-data">
+                <input class="form-control" name="file" type="file" id="formFile" required><br />
+                <div style="text-align: center">
+                    <input type="submit" value="Upload" class="btn btn-warning">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="padding-top: 30px">
+        <th:block th:include="image_list::image_list"></th:block>
+    </div>
 </div>
 </body>
 

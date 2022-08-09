@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/styles/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 
 <body>
@@ -10,28 +11,26 @@
     <div style="margin-top: 30px; text-align: center">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <span>
-                    <img class="rounded-circle" src="../static/images/Instagram.svg" width="70" th:src="@{images/Instagram.svg}"/>
-                </span>
-                <span class="app_title">&nbsp;Instaclone</span>
+                <span class="app_title" style="font-size: 35px">&nbsp;Instaclone</span>
             </div>
         </div>
-        <div class="row" style="text-align: center; padding-top: 15px">
+        <div sec:authorize="isFullyAuthenticated()" class="row" style="text-align: center; padding-top: 15px">
             <div class="col-md-6 offset-md-3">
-                <ul id="navbar_section" sec:authorize="isFullyAuthenticated()">
-                    <li style="display: inline-block">
-                        <span sec:authentication="name"></span>
-                    </li>
-                    <li style="display: inline-block; padding-left: 10px">|</li>
-                    <li style="display: inline-block; padding-left: 10px">Logout</li>
-                </ul>
+                <form id="logoutForm" method="POST" th:action="@{/logout}">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+                <div>
+                    <span style="font-size: 25px" sec:authentication="name"></span>
+                    <span style="display: inline-block; padding-left: 30px">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="document.forms['logoutForm'].submit()" style="font-size: 16px; padding: 4px">Logout</button>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</body>
-
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
 </html>

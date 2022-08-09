@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<div th:fragment="image_list">
+    <div th:if="${imageList.size()==0}" style="text-align: center">
+        <h4>No image is uploaded yet</h4>
+    </div>
+
+    <div th:unless="${imageList.size()==0}" style="margin-bottom: 40px">
+        <div class="row">
+            <th:block th:each="image:${imageList}">
+                <div class="col-md-4" style="padding-bottom: 10px">
+                    <img th:src="@{/images/}+${image.id}" style="width: 100%" height="230px" />
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

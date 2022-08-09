@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+
+    <link th:href="@{/css/auth.css}" rel="stylesheet" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
-<h1>I am LOGIN</h1>
+  <div class="container">
+      <th:block th:include="header:: header" ></th:block>
+
+      <form class="form-signin" th:object="${loginDto}" method="POST" th:action="@{/auth/login}">
+          <h2 class="form-heading">Log in</h2>
+
+          <div class="form-group">
+              <input name="username" type="text" class="form-control" placeholder="Username"
+                     autofocus="true"/>
+              <input name="password" type="password" class="form-control" placeholder="Password"/>
+              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+              <h4 class="text-center" style="padding-top: 10px"><a th:href="@{/auth/register}">Create an account</a></h4>
+          </div>
+      </form>
+  </div>
+
+  <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
 </body>
 </html>
